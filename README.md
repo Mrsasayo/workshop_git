@@ -1,10 +1,10 @@
-# Proyecto ETL: Carga de Datos de Airbnb
+# ETL Project: Airbnb Data Loading
 
-Este proyecto es un proceso ETL (Extract, Transform, Load) que tiene como objetivo cargar y transformar datos de Airbnb para su posterior análisis. En esta primera etapa, nos enfocamos en la carga de datos desde un archivo CSV a una base de datos PostgreSQL.
+This project is an ETL (Extract, Transform, Load) process aimed at loading and transforming Airbnb data for subsequent analysis. In this initial stage, we focus on loading data from a CSV file into a PostgreSQL database.
 
-## Estructura del Proyecto
+## Project Structure
 
-El proyecto está organizado de la siguiente manera:
+The project is organized as follows:
 
 Proyecto_ETL:           .gitignore, credentials.json, README.md
 
@@ -12,46 +12,44 @@ Proyecto_ETL/data:      Airbnb_Open_Data.csv
 
 Proyecto_ETL/Notebooks: 001_DataLoad.ipynb, 002_EDA.ipynb, 003_CleanData.ipynb
 
-### Descripción de Archivos y Carpetas
+### Description of Files and Folders
 
-- **.gitignore**: Archivo que especifica los archivos y carpetas que deben ser ignorados por Git. En este caso, se ignora el archivo `credentials.json` por razones de seguridad.
-- **credentials.json**: Archivo que contiene las credenciales de acceso a la base de datos PostgreSQL.
-- **README.md**: Este archivo, que proporciona una descripción general del proyecto.
-- **data/**: Carpeta que contiene el archivo CSV con los datos de Airbnb.
-- **Notebooks/**: Carpeta que contiene los notebooks de Jupyter utilizados en el proyecto.
+- **.gitignore**: File specifying which files and folders should be ignored by Git. In this case, the `credentials.json` file is ignored for security reasons.
+- **credentials.json**: File containing the credentials for accessing the PostgreSQL database.
+- **README.md**: This file, providing an overview of the project.
+- **data/**: Folder containing the CSV file with Airbnb data.
+- **Notebooks/**: Folder containing the Jupyter notebooks used in the project.
 
-### Instalar Dependencias:
+### Install Dependencies:
    ```bash
    pip install pandas sqlalchemy psycopg2 matplotlib seaborn 
    ```
 
 ## Notebook 001_DataLoad.ipynb
 
-Este notebook se encarga de la carga inicial de los datos desde el archivo CSV `Airbnb_Open_Data.csv` a una base de datos PostgreSQL.
+This notebook handles the initial loading of data from the CSV file `Airbnb_Open_Data.csv` into a PostgreSQL database.
 
-### Pasos Realizados en el Notebook
+### Steps Performed in the Notebook
 
-1. **Carga de Credenciales**: Se cargan las credenciales de la base de datos desde el archivo `credentials.json`.
+1. **Credentials Upload**: The database credentials are uploaded from the `credentials.json` file.
 
-2. **Carga del Dataset**: Se carga el archivo CSV `Airbnb_Open_Data.csv` en un DataFrame de Pandas.
+2. **Dataset upload**: The CSV file `Airbnb_Open_Data.csv` is uploaded into a Pandas DataFrame.
 
-3. **Creación de la Base de Datos**: Se verifica si la base de datos `airbnb` existe en PostgreSQL. Si no existe, se crea.
+3. **Database Creation**: Check if the `airbnb` database exists in PostgreSQL. If it does not exist, it is created.
 
-4. **Carga de Datos a la Base de Datos**: Se crea una tabla llamada `airbnb_data` en la base de datos y se cargan los datos del DataFrame en esta tabla.
+4. **Upload Data to the Database**: A table called `airbnb_data` is created in the database and the data from the DataFrame is uploaded to this table.
 
-5. **Verificación de Datos**: Se realizan consultas simples para verificar que los datos se han cargado correctamente en la base de datos.
+5. **Data Verification**: Simple queries are performed to verify that the data has been correctly loaded into the database.
 
-### Instrucciones de Uso
+### Instructions for Use
 
-1. **Clonar el Repositorio**:
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/tu_usuario/Proyecto_ETL.git
    cd Proyecto_ETL
 
-Configurar Credenciales:
-se debe crear un archivo `credentials.json` con el siguiente contenido:
-
-2. **Instalar Dependencias**:
+Configure Credentials:
+a `credentials.json` file must be created with the following content:
   ```javascript
   {
   "user": "user",
@@ -62,78 +60,78 @@ se debe crear un archivo `credentials.json` con el siguiente contenido:
   }
   ```
 
-luego de haberlo creado, Asegúrate de que el archivo credentials.json esté correctamente configurado con tus credenciales de PostgreSQL.
+After you have created it, make sure that the credentials.json file is correctly configured with your PostgreSQL credentials.
 
-### Ejecutar el Notebook:
-Abre el notebook 001_DataLoad.ipynb en Jupyter y ejecuta las celdas en orden.
+### Run the Notebook:
+Open the notebook 001_DataLoad.ipynb in Jupyter and run the cells in order.
 
-# Proyecto ETL: Análisis Exploratorio de Datos (EDA)
+# ETL Project: Exploratory Data Analysis (EDA)
 
-En esta etapa del proyecto, nos enfocamos en el análisis exploratorio de datos (EDA) utilizando el notebook `002_EDA.ipynb`. Este notebook tiene como objetivo explorar y visualizar los datos de Airbnb cargados en la base de datos PostgreSQL para identificar patrones, tendencias y posibles problemas en los datos.
+In this stage of the project, we focus on EDA using the `002_EDA.ipynb` notebook. This notebook aims to explore and visualise the Airbnb data loaded into the PostgreSQL database to identify patterns, trends and potential problems in the data.
 
 ## Notebook 002_EDA.ipynb
 
-Este notebook realiza un análisis exploratorio de los datos de Airbnb, incluyendo la identificación de valores nulos, duplicados, y la visualización de distribuciones y relaciones entre variables.
+This notebook performs an exploratory analysis of the Airbnb data, including identifying null values, duplicates, and visualising distributions and relationships between variables.
 
-### Pasos Realizados en el Notebook
+### Steps Performed in the Notebook
 
-1. **Carga de Datos**: Se conecta a la base de datos PostgreSQL y se cargan los datos desde la tabla `airbnb_data`.
+1. **Data Upload**: Connect to the PostgreSQL database and upload data from the `airbnb_data` table.
 
-2. **Exploración Inicial**:
-   - Se verifica el tamaño del dataset (número de filas y columnas).
-   - Se identifican filas duplicadas.
-   - Se calculan los valores nulos y su porcentaje por columna.
+2. **Initial Scan**:
+   - The size of the dataset (number of rows and columns) is checked.
+   - Duplicate rows are identified.
+   - Calculate null values and their percentage per column.
 
 
-3. **Análisis de Tipos de Datos**: Se revisan los tipos de datos de cada columna para asegurar que sean correctos.
+3. **Data Type Analysis**: The data types of each column are checked to ensure that they are correct.
 
-4. **Visualización de Datos**:
-   - Distribución de precios.
-   - Relación entre precios y noches mínimas.
-   - Distribución de tarifas de servicio.
-   - Detección de valores atípicos en precios y tarifas de servicio.
-   - Distribución de tipos de habitación.
-   - Distribución de publicaciones por año de construcción.
-   - Porcentaje de hosts verificados vs. no verificados.
-   - Cantidad de publicaciones por grupo de vecindario.
-   - Porcentaje de cada tipo de política de cancelación.
-   - Distribución de propiedades con reserva instantánea.
+4. **Data Visualisation**:
+   - Price distribution.
+   - Relationship between prices and minimum nights.
+   - Distribution of service rates.
+   - Detection of outliers in prices and service rates.
+   - Distribution of room types.
+   - Distribution of publications by year of construction.
+   - Percentage of verified vs. unverified hosts.
+   - Number of postings by neighbourhood group.
+   - Percentage of each type of cancellation policy.
+   - Distribution of properties with instant booking.
 
-### Ejecutar el Notebook:
-Abre el notebook 002_EDA.ipynb en Jupyter y ejecuta las celdas en orden.
+### Run the Notebook:
+Open notebook 002_EDA.ipynb in Jupyter and run the cells in order.
 
-# Proyecto ETL: Limpieza de Datos
+# ETL Project: Data cleansing
 
-En esta etapa del proyecto, nos enfocamos en la limpieza y transformación de los datos utilizando el notebook `003_CleanData.ipynb`. Este notebook tiene como objetivo preparar los datos para su posterior análisis, eliminando valores nulos, corrigiendo errores y transformando columnas para que sean más útiles.
+In this stage of the project, we focus on cleaning and transforming the data using the `003_CleanData.ipynb` notebook. This notebook aims to prepare the data for further analysis by removing null values, correcting errors and transforming columns to make them more useful.
 
 ## Notebook 003_CleanData.ipynb
 
-Este notebook realiza la limpieza y transformación de los datos de Airbnb almacenados en la base de datos PostgreSQL. Se enfoca en la creación de una nueva tabla (`airbnb_EDA`), la renombración de columnas, la eliminación de columnas innecesarias, el manejo de valores nulos y la corrección de errores en los datos.
+This notebook performs cleanup and transformation of Airbnb data stored in the PostgreSQL database. It focuses on creating a new table (`airbnb_EDA`), renaming columns, removing unnecessary columns, handling null values and correcting errors in the data.
 
-### Pasos Realizados en el Notebook
+### Steps Performed in the Notebook
 
-1. **Carga de Datos**:
-   - Se conecta a la base de datos PostgreSQL y se cargan los datos desde la tabla `airbnb_data`.
+1. **Load Data**:
+   - Connect to the PostgreSQL database and load data from the `airbnb_data` table.
 
-2. **Creación de una Nueva Tabla (`airbnb_EDA`)**:
-   - Se crea una nueva tabla llamada `airbnb_EDA` con la misma información que la tabla original (`airbnb_data`).
-   - Se verifica que la nueva tabla se haya creado correctamente y que contenga el mismo número de registros que la tabla original.
+2. **Creation of a New Table (`airbnb_EDA`)**:
+   - A new table called `airbnb_EDA` is created with the same information as the original table (`airbnb_data`).
+   - Check that the new table has been created correctly and that it contains the same number of records as the original table.
 
-3. **Renombración de Columnas**:
-   - Se renombran las columnas que contienen espacios en sus nombres para facilitar su manejo en consultas SQL.
-   - Ejemplo: `host id` se convierte en `host_id`, `minimum nights` se convierte en `minimum_nights`, etc.
+3. **Column renaming**:
+   - Columns that contain spaces in their names are renamed to make them easier to handle in SQL queries.
+   - Example: `host id` becomes `host_id`, `minimum nights` becomes `minimum_nights`, etc.
 
-4. **Eliminación de Columnas Innecesarias**:
-   - Se eliminan columnas que no son relevantes para el análisis, como `host_name`, `lat`, `long`, `country_code`, `country`, `neighbourhood`, y `house_rules`.
+4. **Removal of Unnecessary Columns**:
+   - Columns that are not relevant to the analysis are removed, such as `host_name`, `lat`, `long`, `country_code`, `country`, `neighbourhood`, and `house_rules`.
 
-5. **Manejo de Valores Nulos**:
-   - Se reemplazan los valores nulos en columnas de texto con `'not fill'`.
-   - Se reemplazan los valores nulos en columnas numéricas con `-1`.
-   - Se transforma la columna `last_review` para convertir las fechas en un formato numérico (`AAAAMMDD`). Las fechas nulas se reemplazan con `99999999`.
+5. **Null Value Handling**:
+   - Null values in text columns are replaced with ``not fill``.
+   - Replace null values in numeric columns with `-1`.
+   - Transform the `last_review` column to convert dates to a numeric format (`YYYYYMMDD`). Null dates are replaced with `99999999`.
 
-6. **Corrección de Errores en los Datos**:
-   - Se corrigen errores en la columna `neighbourhood_group`, como `'brookln'` y `'manhatan'`, que se cambian a `'Brooklyn'` y `'Manhattan'`, respectivamente.
+6. **Correction of Data Errors**:
+   - Errors in the `neighbourhood_group` column are corrected, such as `‘brookln’` and `‘manhatan’`, which are changed to `‘Brooklyn’` and `‘Manhattan’`, respectively.
 
 
-Ejecutar el Notebook:
-Abre el notebook 003_CleanData.ipynb en Jupyter y ejecuta las celdas en orden.
+Run the Notebook:
+Open notebook 003_CleanData.ipynb in Jupyter and run the cells in order.
