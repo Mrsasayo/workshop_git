@@ -6,18 +6,11 @@ Este proyecto es un proceso ETL (Extract, Transform, Load) que tiene como objeti
 
 El proyecto está organizado de la siguiente manera:
 
-Proyecto_ETL/
-│ .gitignore
-│ credentials.json
-│ README.md
-│
-├───data
-│       Airbnb_Open_Data.csv
-│
-└───Notebooks
-        001_DataLoad.ipynb
-        002_EDA.ipynb
-        003_CleanData.ipynb
+Proyecto_ETL:           .gitignore, credentials.json, README.md
+
+Proyecto_ETL/data:      Airbnb_Open_Data.csv
+
+Proyecto_ETL/Notebooks: 001_DataLoad.ipynb, 002_EDA.ipynb, 003_CleanData.ipynb
 
 
 ### Descripción de Archivos y Carpetas
@@ -46,7 +39,7 @@ Este notebook se encarga de la carga inicial de los datos desde el archivo CSV `
 
 ### Requisitos
 
-- **Python 3.x**
+- **Python**
 - **Pandas**
 - **SQLAlchemy**
 - **Psycopg2**
@@ -59,19 +52,24 @@ Este notebook se encarga de la carga inicial de los datos desde el archivo CSV `
    git clone https://github.com/tu_usuario/Proyecto_ETL.git
    cd Proyecto_ETL
 
-Instalar Dependencias:
-    ```bash
-    pip install pandas sqlalchemy psycopg2
+2. **Instalar Dependencias**:
+   ```bash
+   pip install pandas sqlalchemy psycopg2
 
 Configurar Credenciales:
-Asegúrate de que el archivo credentials.json esté correctamente configurado con tus credenciales de PostgreSQL.
+se debe crear un archivo `credentials.json` con el siguiente contenido:
+3. **Instalar Dependencias**:
+   ```javascript
+   {
+    "user": "user",
+    "password": "password",
+    "host": "host",
+    "port": "port", 
+    "database": "database"
+  }
+  ```
 
-Ejecutar el Notebook:
+luego de haberlo creado, Asegúrate de que el archivo credentials.json esté correctamente configurado con tus credenciales de PostgreSQL.
+
+## Ejecutar el Notebook:
 Abre el notebook 001_DataLoad.ipynb en Jupyter y ejecuta las celdas en orden.
-
-Resultados Esperados
-Base de Datos Creada: Se creará una base de datos llamada airbnb en PostgreSQL.
-
-Tabla Creada: Se creará una tabla llamada airbnb_data en la base de datos airbnb.
-
-Datos Cargados: Los datos del archivo CSV se cargarán en la tabla airbnb_data.
