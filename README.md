@@ -53,12 +53,12 @@ se debe crear un archivo `credentials.json` con el siguiente contenido:
 
 2. **Instalar Dependencias**:
   ```javascript
-   {
-    "user": "user",
-    "password": "password",
-    "host": "host",
-    "port": "port", 
-    "database": "database"
+  {
+  "user": "user",
+  "password": "password",
+  "host": "host",
+  "port": "port", 
+  "database": "database"
   }
   ```
 
@@ -134,25 +134,6 @@ Este notebook realiza la limpieza y transformación de los datos de Airbnb almac
 6. **Corrección de Errores en los Datos**:
    - Se corrigen errores en la columna `neighbourhood_group`, como `'brookln'` y `'manhatan'`, que se cambian a `'Brooklyn'` y `'Manhattan'`, respectivamente.
 
-### Requisitos
-
-- **Python**
-- **Pandas**
-- **SQLAlchemy**
-- **Psycopg2**
-- **PostgreSQL**
-
-Configurar Credenciales:
-Asegúrate de que el archivo credentials.json esté correctamente configurado con tus credenciales de PostgreSQL.
 
 Ejecutar el Notebook:
 Abre el notebook 003_CleanData.ipynb en Jupyter y ejecuta las celdas en orden.
-
-Resultados Esperados
-Nueva Tabla Creada: Se creará una nueva tabla llamada airbnb_EDA con los datos limpios y transformados.
-
-Columnas Renombradas: Las columnas con espacios en sus nombres serán renombradas para facilitar su uso en consultas SQL.
-
-Valores Nulos Manejados: Los valores nulos en columnas de texto y numéricas serán reemplazados con valores predeterminados.
-
-Errores Corregidos: Se corregirán errores en los datos, como nombres incorrectos en la columna neighbourhood_group.
