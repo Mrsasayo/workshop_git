@@ -99,19 +99,60 @@ Este notebook realiza un análisis exploratorio de los datos de Airbnb, incluyen
    - Porcentaje de cada tipo de política de cancelación.
    - Distribución de propiedades con reserva instantánea.
 
+### Ejecutar el Notebook:
+Abre el notebook 002_EDA.ipynb en Jupyter y ejecuta las celdas en orden.
+
+# Proyecto ETL: Limpieza de Datos
+
+En esta etapa del proyecto, nos enfocamos en la limpieza y transformación de los datos utilizando el notebook `003_CleanData.ipynb`. Este notebook tiene como objetivo preparar los datos para su posterior análisis, eliminando valores nulos, corrigiendo errores y transformando columnas para que sean más útiles.
+
+## Notebook 003_CleanData.ipynb
+
+Este notebook realiza la limpieza y transformación de los datos de Airbnb almacenados en la base de datos PostgreSQL. Se enfoca en la creación de una nueva tabla (`airbnb_EDA`), la renombración de columnas, la eliminación de columnas innecesarias, el manejo de valores nulos y la corrección de errores en los datos.
+
+### Pasos Realizados en el Notebook
+
+1. **Carga de Datos**:
+   - Se conecta a la base de datos PostgreSQL y se cargan los datos desde la tabla `airbnb_data`.
+
+2. **Creación de una Nueva Tabla (`airbnb_EDA`)**:
+   - Se crea una nueva tabla llamada `airbnb_EDA` con la misma información que la tabla original (`airbnb_data`).
+   - Se verifica que la nueva tabla se haya creado correctamente y que contenga el mismo número de registros que la tabla original.
+
+3. **Renombración de Columnas**:
+   - Se renombran las columnas que contienen espacios en sus nombres para facilitar su manejo en consultas SQL.
+   - Ejemplo: `host id` se convierte en `host_id`, `minimum nights` se convierte en `minimum_nights`, etc.
+
+4. **Eliminación de Columnas Innecesarias**:
+   - Se eliminan columnas que no son relevantes para el análisis, como `host_name`, `lat`, `long`, `country_code`, `country`, `neighbourhood`, y `house_rules`.
+
+5. **Manejo de Valores Nulos**:
+   - Se reemplazan los valores nulos en columnas de texto con `'not fill'`.
+   - Se reemplazan los valores nulos en columnas numéricas con `-1`.
+   - Se transforma la columna `last_review` para convertir las fechas en un formato numérico (`AAAAMMDD`). Las fechas nulas se reemplazan con `99999999`.
+
+6. **Corrección de Errores en los Datos**:
+   - Se corrigen errores en la columna `neighbourhood_group`, como `'brookln'` y `'manhatan'`, que se cambian a `'Brooklyn'` y `'Manhattan'`, respectivamente.
 
 ### Requisitos
 
-- *Python*
-- *Pandas*
-- *Matplotlib*
-- *Seaborn*
-- *SQLAlchemy*
-- *Psycopg2*
-- *PostgreSQL*
+- **Python**
+- **Pandas**
+- **SQLAlchemy**
+- **Psycopg2**
+- **PostgreSQL**
 
 Configurar Credenciales:
 Asegúrate de que el archivo credentials.json esté correctamente configurado con tus credenciales de PostgreSQL.
 
 Ejecutar el Notebook:
-Abre el notebook 002_EDA.ipynb en Jupyter y ejecuta las celdas en orden.
+Abre el notebook 003_CleanData.ipynb en Jupyter y ejecuta las celdas en orden.
+
+Resultados Esperados
+Nueva Tabla Creada: Se creará una nueva tabla llamada airbnb_EDA con los datos limpios y transformados.
+
+Columnas Renombradas: Las columnas con espacios en sus nombres serán renombradas para facilitar su uso en consultas SQL.
+
+Valores Nulos Manejados: Los valores nulos en columnas de texto y numéricas serán reemplazados con valores predeterminados.
+
+Errores Corregidos: Se corregirán errores en los datos, como nombres incorrectos en la columna neighbourhood_group.
