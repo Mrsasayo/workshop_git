@@ -12,7 +12,6 @@ Proyecto_ETL/data:      Airbnb_Open_Data.csv
 
 Proyecto_ETL/Notebooks: 001_DataLoad.ipynb, 002_EDA.ipynb, 003_CleanData.ipynb
 
-
 ### Descripción de Archivos y Carpetas
 
 - **.gitignore**: Archivo que especifica los archivos y carpetas que deben ser ignorados por Git. En este caso, se ignora el archivo `credentials.json` por razones de seguridad.
@@ -20,6 +19,11 @@ Proyecto_ETL/Notebooks: 001_DataLoad.ipynb, 002_EDA.ipynb, 003_CleanData.ipynb
 - **README.md**: Este archivo, que proporciona una descripción general del proyecto.
 - **data/**: Carpeta que contiene el archivo CSV con los datos de Airbnb.
 - **Notebooks/**: Carpeta que contiene los notebooks de Jupyter utilizados en el proyecto.
+
+### Instalar Dependencias:
+   ```bash
+   pip install pandas sqlalchemy psycopg2 matplotlib seaborn 
+   ```
 
 ## Notebook 001_DataLoad.ipynb
 
@@ -37,14 +41,6 @@ Este notebook se encarga de la carga inicial de los datos desde el archivo CSV `
 
 5. **Verificación de Datos**: Se realizan consultas simples para verificar que los datos se han cargado correctamente en la base de datos.
 
-### Requisitos
-
-- **Python**
-- **Pandas**
-- **SQLAlchemy**
-- **Psycopg2**
-- **PostgreSQL**
-
 ### Instrucciones de Uso
 
 1. **Clonar el Repositorio**:
@@ -52,14 +48,11 @@ Este notebook se encarga de la carga inicial de los datos desde el archivo CSV `
    git clone https://github.com/tu_usuario/Proyecto_ETL.git
    cd Proyecto_ETL
 
-2. **Instalar Dependencias**:
-   ```bash
-   pip install pandas sqlalchemy psycopg2
-
 Configurar Credenciales:
 se debe crear un archivo `credentials.json` con el siguiente contenido:
-3. **Instalar Dependencias**:
-   ```javascript
+
+2. **Instalar Dependencias**:
+  ```javascript
    {
     "user": "user",
     "password": "password",
@@ -71,5 +64,54 @@ se debe crear un archivo `credentials.json` con el siguiente contenido:
 
 luego de haberlo creado, Asegúrate de que el archivo credentials.json esté correctamente configurado con tus credenciales de PostgreSQL.
 
-## Ejecutar el Notebook:
+### Ejecutar el Notebook:
 Abre el notebook 001_DataLoad.ipynb en Jupyter y ejecuta las celdas en orden.
+
+# Proyecto ETL: Análisis Exploratorio de Datos (EDA)
+
+En esta etapa del proyecto, nos enfocamos en el análisis exploratorio de datos (EDA) utilizando el notebook `002_EDA.ipynb`. Este notebook tiene como objetivo explorar y visualizar los datos de Airbnb cargados en la base de datos PostgreSQL para identificar patrones, tendencias y posibles problemas en los datos.
+
+## Notebook 002_EDA.ipynb
+
+Este notebook realiza un análisis exploratorio de los datos de Airbnb, incluyendo la identificación de valores nulos, duplicados, y la visualización de distribuciones y relaciones entre variables.
+
+### Pasos Realizados en el Notebook
+
+1. **Carga de Datos**: Se conecta a la base de datos PostgreSQL y se cargan los datos desde la tabla `airbnb_data`.
+
+2. **Exploración Inicial**:
+   - Se verifica el tamaño del dataset (número de filas y columnas).
+   - Se identifican filas duplicadas.
+   - Se calculan los valores nulos y su porcentaje por columna.
+
+
+3. **Análisis de Tipos de Datos**: Se revisan los tipos de datos de cada columna para asegurar que sean correctos.
+
+4. **Visualización de Datos**:
+   - Distribución de precios.
+   - Relación entre precios y noches mínimas.
+   - Distribución de tarifas de servicio.
+   - Detección de valores atípicos en precios y tarifas de servicio.
+   - Distribución de tipos de habitación.
+   - Distribución de publicaciones por año de construcción.
+   - Porcentaje de hosts verificados vs. no verificados.
+   - Cantidad de publicaciones por grupo de vecindario.
+   - Porcentaje de cada tipo de política de cancelación.
+   - Distribución de propiedades con reserva instantánea.
+
+
+### Requisitos
+
+- *Python*
+- *Pandas*
+- *Matplotlib*
+- *Seaborn*
+- *SQLAlchemy*
+- *Psycopg2*
+- *PostgreSQL*
+
+Configurar Credenciales:
+Asegúrate de que el archivo credentials.json esté correctamente configurado con tus credenciales de PostgreSQL.
+
+Ejecutar el Notebook:
+Abre el notebook 002_EDA.ipynb en Jupyter y ejecuta las celdas en orden.
